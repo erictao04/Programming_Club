@@ -32,7 +32,7 @@ class MatchMaker():
             best_matches = []
 
             for person2 in lst_responses:
-                if person1 == person2:
+                if person1 == person2 or person1[4] != person2[4]:
                     continue
 
                 best_matches.sort(reverse=True)
@@ -47,7 +47,7 @@ class MatchMaker():
             best_matches.sort(reverse=True)
 
             first_name = person1[2].split(' ')[0]
-            email_response = f'\nHi {first_name},\n\n'
+            email_response = f'\nHi {first_name.title()},\n\n'
             email_response += "Your best matches are:\n\n"
             for match in best_matches:
                 email_response += f"  --> {round(match[0]/11*100)}%, {match[1]}, {match[2]}\n\n"
